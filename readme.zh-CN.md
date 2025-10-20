@@ -1,4 +1,4 @@
-# Afilmory Docker Deployment
+# Afilmory Docker 部署
 
 <p align="center">
   🌐
@@ -7,26 +7,26 @@
   <a href="readme.zh-CN.md">简体中文</a>
 </p>
 
-A [Afilmory](https://github.com/Afilmory/Afilmory) deployment solution based on Docker that allows you to quickly set up a modern photo gallery website.
+一个基于 Docker 的 [Afilmory](https://github.com/Afilmory/Afilmory) 部署方案，让您能够快速部署现代化的照片画廊网站。
 
-## 🚀 Quick Start
+## 🚀 快速开始
 
-### Requirements
+### 环境要求
 
-* Docker
-* Docker Compose (optional)
+- Docker
+- Docker Compose (可选)
 
-### 1. Edit Configuration Files
+### 1. 修改配置文件
 
 **`config.json`**
 
 ```json
 {
-  "name": "Your Photo Gallery", // Website name
-  "title": "Your Photo Gallery", // Page title
-  "description": "Capturing beautiful moments in life", // Website description
-  "url": "https://", // Personal URL
-  "accentColor": "#fb7185", // Theme color
+  "name": "Your Photo Gallery", // 网站名称
+  "title": "Your Photo Gallery", // 页面标题
+  "description": "Capturing beautiful moments in life", // 网站描述
+  "url": "https://", // 个人 URL
+  "accentColor": "#fb7185", // 主题色
   "author": {
     "name": "Your Name",
     "url": "https://your-website.com",
@@ -45,11 +45,11 @@ A [Afilmory](https://github.com/Afilmory/Afilmory) deployment solution based on 
 
 ```json
 {
-  "repo": { // Use remote repository as manifest and thumbnail cache
+  "repo": { // 使用远端仓库作为 manifest 和 thumbnail 缓存
     "enable": false,
     "url": "https://github.com/username/gallery-public"
   },
-  "storage": { // Storage configuration
+  "storage": { // 存储配置
     "provider": "s3",
     "bucket": "your-photos-bucket",
     "region": "us-east-1",
@@ -61,44 +61,38 @@ A [Afilmory](https://github.com/Afilmory/Afilmory) deployment solution based on 
 
 **`.env`**
 
-* S3 storage configuration:
+- S3 存储配置
 
 ```
 S3_ACCESS_KEY_ID=your_access_key_id
 S3_SECRET_ACCESS_KEY=your_secret_access_key
 ```
 
-* PG (optional):
+- PG (可选)
 
 ```
 PG_CONNECTION_STRING=
 ```
 
-* GIT (optional):
+- GIT （可选）
 
 ```
 GIT_TOKEN=
 ```
 
-### 2. Build Docker Image
-
-> 大陆服务器可能会遇到 Alpine 内部安装 Perl 失败，打包失败的情况，可在 apk update 命令前插入下属指令，替换源
-> ```
-> sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
-> ```
-> 之后再继续执行 build 指令
+### 2. 构建 Docker 镜像
 
 ```bash
 docker build -t afilmory .
 ```
 
-### 3. Run the Container
+### 3. 运行容器
 
 ```bash
 docker run -p 3000:3000 afilmory
 ```
 
-Or use Docker Compose:
+或者使用 Docker Compose:
 
 ```yaml
 services:
@@ -114,6 +108,7 @@ services:
       - ./.env:/app/.env
 ```
 
-## 📄 License
+
+## 📄 许可证
 
 MIT License © 2025
